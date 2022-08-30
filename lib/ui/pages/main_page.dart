@@ -8,6 +8,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int selectedPage = 0;
+  PageController pageController = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
@@ -22,17 +25,35 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           SafeArea(
-              child: ListView(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 100,
-                color: Colors.white,
-                child: Row(children: []),
-              ),
-            ],
-          )),
-          Align(alignment: Alignment.bottomCenter, child: BottomNavBar())
+              child: PageView(
+                  controller: pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      selectedPage = index;
+                    });
+                  },
+                  children: [
+                Center(
+                  child: Text("home"),
+                ),
+                Center(
+                  child: Text("order"),
+                ),
+                Center(
+                  child: Text("account"),
+                ),
+              ])),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: BottomNavBar(
+                SelectedIndex: selectedPage,
+                onTap: (index) {
+                  setState(() {
+                    selectedPage = index;
+                  });
+                  pageController.jumpToPage(selectedPage);
+                },
+              ))
         ],
       ),
     ));

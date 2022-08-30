@@ -31,7 +31,7 @@ class BottomNavBar extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 if (onTap != null) {
-                  onTap!(0);
+                  onTap!(1);
                 }
               },
               child: Container(
@@ -41,14 +41,14 @@ class BottomNavBar extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/ic_order' +
-                            ((SelectedIndex == 0) ? '.png' : '_normal.png')),
+                            ((SelectedIndex == 1) ? '.png' : '_normal.png')),
                         fit: BoxFit.contain)),
               ),
             ),
             GestureDetector(
               onTap: () {
                 if (onTap != null) {
-                  onTap!(0);
+                  onTap!(2);
                 }
               },
               child: Container(
@@ -57,7 +57,7 @@ class BottomNavBar extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/ic_profile' +
-                            ((SelectedIndex == 0) ? '.png' : '_normal.png')),
+                            ((SelectedIndex == 2) ? '.png' : '_normal.png')),
                         fit: BoxFit.contain)),
               ),
             )

@@ -2,8 +2,8 @@ part of 'widgets.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int SelectedIndex;
-  final Function(int Index)? onTap;
-  BottomNavBar({this.SelectedIndex = 0, this.onTap});
+  final Function(int Index)? onTapButton;
+  BottomNavBar({this.SelectedIndex = 0, this.onTapButton});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,8 +14,8 @@ class BottomNavBar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                if (onTap != null) {
-                  onTap!(0);
+                if (onTapButton != null) {
+                  onTapButton!(0);
                 }
               },
               child: Container(
@@ -30,8 +30,8 @@ class BottomNavBar extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                if (onTap != null) {
-                  onTap!(1);
+                if (onTapButton != null) {
+                  onTapButton!(1);
                 }
               },
               child: Container(
@@ -47,8 +47,8 @@ class BottomNavBar extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                if (onTap != null) {
-                  onTap!(2);
+                if (onTapButton != null) {
+                  onTapButton!(2);
                 }
               },
               child: Container(

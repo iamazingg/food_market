@@ -11,6 +11,8 @@ class _FoodPageState extends State<FoodPage> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    double ListItemWidth =
+        MediaQuery.of(context).size.width - 2 * defaultMargin;
     return ListView(
       children: [
         Column(
@@ -46,7 +48,7 @@ class _FoodPageState extends State<FoodPage> {
                           borderRadius: BorderRadius.circular(8),
                           image: DecorationImage(
                               image: NetworkImage(
-                                  "https://instagram.fdps2-1.fna.fbcdn.net/v/t51.2885-19/54277631_407830939773425_9049066003236913152_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fdps2-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=q03fg3DuC8YAX-1IrGW&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AT_ToFXV_s1ie7YcbdC1Vr6dOU9AANPFrZvDHb6dpOcVsQ&oe=631A9C1C&_nc_sid=8fd12b"))),
+                                  "https://instagram.fdps2-1.fna.fbcdn.net/v/t51.2885-19/54277631_407830939773425_9049066003236913152_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fdps2-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=hgUfL1wuPlYAX8RCOVd&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AT_ojS7oTiohF68IfsWInFUFTj5mqxuN5brzT8NEgcURng&oe=6322851C&_nc_sid=8fd12b"))),
                     )
                   ]),
             ),
@@ -92,13 +94,25 @@ class _FoodPageState extends State<FoodPage> {
                     IndexedStack(
                       index: selectedIndex,
                       children: [
-                        Text("new"),
+                        Column(
+                          children: mockFoods
+                              .map((e) => Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        defaultMargin, 10, defaultMargin, 10),
+                                    child: FoodListItem(
+                                        food: e, itemWidth: ListItemWidth),
+                                  ))
+                              .toList(),
+                        ),
                         Text("Recomended"),
                         Text("editor pick")
                       ],
                     )
                   ],
-                ))
+                )),
+            SizedBox(
+              height: 80,
+            )
           ],
         ),
       ],
